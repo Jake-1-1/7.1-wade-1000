@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" width="600" height="400">
+  <title>Mapa ilustrativo con la ubicación de El Comal</title>
+  <rect x="3" y="3" width="594" height="394" rx="26" fill="#f5f5f5" stroke="#111111" stroke-width="6"/>
+  <rect x="390" y="40" width="160" height="110" rx="20" fill="#d9f2df" stroke="#111111" stroke-width="3"/>
+  <rect x="60" y="255" width="140" height="95" rx="20" fill="#ffe3e5" stroke="#111111" stroke-width="3"/>
+  <g stroke="#ffffff" stroke-width="22" stroke-linecap="round">
+    <path d="M30 125 H570"/>
+    <path d="M30 230 H570"/>
+    <path d="M155 30 V370"/>
+    <path d="M335 30 V370"/>
+  </g>
+  <g stroke="#111111" stroke-width="2" stroke-dasharray="10 10" fill="none">
+    <path d="M30 125 H570"/>
+    <path d="M30 230 H570"/>
+    <path d="M155 30 V370"/>
+    <path d="M335 30 V370"/>
+  </g>
+  <!-- Pin principal -->
+  <path d="M335 230 c-28 0 -45 -22 -45 -45 a45 45 0 0 1 90 0 c0 23 -17 45 -45 45z" fill="#e11d2e" stroke="#111111" stroke-width="5"/>
+  <circle cx="335" cy="185" r="16" fill="#ffffff" stroke="#111111" stroke-width="4"/>
+  <text x="335" y="275" font-family="Arial, sans-serif" font-size="22" font-weight="bold" text-anchor="middle" fill="#111111">EL COMAL</text>
+</svg>

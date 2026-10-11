@@ -1,0 +1,1187 @@
+/* =====================================================================
+   EL COMAL - estilos.css
+   ---------------------------------------------------------------------
+   Estilos propios que se aplican ENCIMA de Bootstrap 5.
+   Identidad: divertida y llamativa en negro, blanco y rojo.
+   Rasgos del estilo: letras grandes, bordes gruesos negros, sombras
+   sólidas tipo cómic y "stickers" girados.
+
+   Índice
+     1. Variables de identidad (colores, fuentes y medidas)
+     2. Ajustes a Bootstrap
+     3. Base y tipografía
+     4. Menú de navegación
+     5. Carrusel de la página de inicio
+     6. Secciones, títulos y separadores
+     7. Tarjetas de platos (resaltado y detalles)
+     8. Cabecera de las páginas subordinadas
+     9. Componentes (características, cifras, accesos, aside, promos...)
+    10. Galería
+    11. Formularios
+    12. Pie de página y botón "volver arriba"
+    13. Animaciones
+    14. Diseño responsivo
+   ===================================================================== */
+
+
+/* ---------------------------------------------------------------------
+   1. Variables de identidad
+   --------------------------------------------------------------------- */
+:root {
+    /* Colores */
+    --rojo: #e11d2e;
+    --rojo-oscuro: #b5121f;
+    --rojo-suave: #ffe3e5;
+    --negro: #111111;
+    --gris: #f5f5f5;
+    --gris-texto: #5c5c5c;
+    --blanco: #ffffff;
+
+    /* Bordes y sombras tipo cómic */
+    --borde: 3px solid var(--negro);
+    --sombra: 6px 6px 0 var(--negro);
+    --sombra-roja: 10px 10px 0 var(--rojo);
+    --radio: 18px;
+
+    /* Fuentes */
+    --fuente-titulos: "Lilita One", "Arial Black", sans-serif;
+    --fuente-texto: "Rubik", "Segoe UI", system-ui, sans-serif;
+
+    /* Bootstrap lee estas variables y usa nuestro rojo como primario */
+    --bs-primary: var(--rojo);
+    --bs-primary-rgb: 225, 29, 46;
+    --bs-link-color: var(--rojo);
+    --bs-link-color-rgb: 225, 29, 46;
+    --bs-link-hover-color: var(--rojo-oscuro);
+    --bs-body-font-family: var(--fuente-texto);
+    --bs-body-color: var(--negro);
+    --bs-border-radius: 12px;
+}
+
+
+/* ---------------------------------------------------------------------
+   2. Ajustes a Bootstrap
+   --------------------------------------------------------------------- */
+
+/* Botones con borde grueso y sombra sólida */
+.btn {
+    font-weight: 700;
+    border: var(--borde);
+    border-radius: 14px;
+    padding: 0.65rem 1.4rem;
+    box-shadow: 4px 4px 0 var(--negro);
+    transition: transform 0.15s ease, box-shadow 0.15s ease, background-color 0.2s;
+}
+
+.btn:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0 var(--negro);
+}
+
+.btn:active {
+    transform: translate(2px, 2px);
+    box-shadow: 1px 1px 0 var(--negro);
+}
+
+.btn-primary {
+    --bs-btn-bg: var(--rojo);
+    --bs-btn-border-color: var(--negro);
+    --bs-btn-hover-bg: var(--rojo-oscuro);
+    --bs-btn-hover-border-color: var(--negro);
+    --bs-btn-active-bg: var(--rojo-oscuro);
+    --bs-btn-active-border-color: var(--negro);
+}
+
+.btn-dark {
+    --bs-btn-bg: var(--negro);
+    --bs-btn-border-color: var(--negro);
+    --bs-btn-hover-bg: #2a2a2a;
+    --bs-btn-hover-border-color: var(--negro);
+}
+
+.btn-light {
+    --bs-btn-bg: var(--blanco);
+    --bs-btn-border-color: var(--negro);
+    --bs-btn-hover-bg: var(--gris);
+    --bs-btn-hover-border-color: var(--negro);
+}
+
+/* Botones de filtro del menú */
+.btn-filtro {
+    --bs-btn-bg: var(--blanco);
+    --bs-btn-color: var(--negro);
+    --bs-btn-border-color: var(--negro);
+    --bs-btn-hover-bg: var(--rojo-suave);
+    --bs-btn-hover-color: var(--negro);
+    --bs-btn-hover-border-color: var(--negro);
+    padding: 0.45rem 1rem;
+    box-shadow: 3px 3px 0 var(--negro);
+}
+
+/* JavaScript le pone "activo" al filtro elegido */
+.btn-filtro.activo {
+    --bs-btn-bg: var(--rojo);
+    --bs-btn-color: var(--blanco);
+    --bs-btn-hover-bg: var(--rojo-oscuro);
+    --bs-btn-hover-color: var(--blanco);
+}
+
+.form-control,
+.form-select {
+    border: var(--borde);
+    border-radius: 12px;
+    padding: 0.7rem 0.95rem;
+}
+
+.form-control:focus,
+.form-select:focus,
+.form-check-input:focus {
+    border-color: var(--rojo);
+    box-shadow: 0 0 0 4px rgba(225, 29, 46, 0.2);
+}
+
+.form-check-input {
+    border: 2px solid var(--negro);
+}
+
+.form-check-input:checked {
+    background-color: var(--rojo);
+    border-color: var(--negro);
+}
+
+.input-group-text {
+    border: var(--borde);
+    background: var(--gris);
+    font-weight: 700;
+}
+
+.accordion {
+    --bs-accordion-border-color: var(--negro);
+    --bs-accordion-border-width: 3px;
+    --bs-accordion-border-radius: 16px;
+    --bs-accordion-inner-border-radius: 13px;
+    --bs-accordion-active-bg: var(--rojo-suave);
+    --bs-accordion-active-color: var(--negro);
+    --bs-accordion-btn-focus-box-shadow: 0 0 0 4px rgba(225, 29, 46, 0.2);
+    box-shadow: var(--sombra);
+    border-radius: 16px;
+}
+
+.accordion-button {
+    font-weight: 700;
+}
+
+.table {
+    --bs-table-striped-bg: var(--gris);
+}
+
+.modal-content {
+    border: var(--borde);
+    border-radius: 24px;
+    box-shadow: 10px 10px 0 var(--negro);
+    overflow: hidden;
+}
+
+
+/* ---------------------------------------------------------------------
+   3. Base y tipografía
+   --------------------------------------------------------------------- */
+body {
+    background: var(--blanco);
+    -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3, .titulo {
+    font-family: var(--fuente-titulos);
+    font-weight: 400;
+    letter-spacing: 0.3px;
+}
+
+.texto-suave {
+    color: var(--gris-texto);
+}
+
+.text-rojo {
+    color: var(--rojo);
+}
+
+.bg-gris {
+    background: var(--gris);
+}
+
+.bg-negro {
+    background: var(--negro);
+    color: var(--blanco);
+}
+
+.bg-rojo {
+    background: var(--rojo);
+    color: var(--blanco);
+}
+
+/* Enlace para saltar al contenido con el teclado */
+.saltar-contenido {
+    position: absolute;
+    left: 1rem;
+    top: -60px;
+    z-index: 2000;
+    padding: 0.6rem 1rem;
+    border: var(--borde);
+    border-radius: 10px;
+    background: var(--rojo);
+    color: var(--blanco);
+    font-weight: 700;
+    text-decoration: none;
+    transition: top 0.2s;
+}
+
+.saltar-contenido:focus {
+    top: 1rem;
+    color: var(--blanco);
+}
+
+/* "Sticker" girado para destacar textos */
+.sticker {
+    display: inline-block;
+    padding: 0.3rem 0.9rem;
+    border: var(--borde);
+    border-radius: 999px;
+    background: var(--blanco);
+    color: var(--negro);
+    font-family: var(--fuente-titulos);
+    font-size: 0.95rem;
+    box-shadow: 3px 3px 0 var(--negro);
+    transform: rotate(-3deg);
+}
+
+.sticker.rojo {
+    background: var(--rojo);
+    color: var(--blanco);
+}
+
+
+/* ---------------------------------------------------------------------
+   4. Menú de navegación
+   --------------------------------------------------------------------- */
+
+/* Franja superior tipo "papel picado" */
+.papel-picado {
+    height: 14px;
+    background:
+        linear-gradient(135deg, var(--rojo) 50%, transparent 50%) 0 0 / 28px 14px repeat-x,
+        linear-gradient(225deg, var(--rojo) 50%, transparent 50%) 0 0 / 28px 14px repeat-x,
+        var(--negro);
+}
+
+.navbar-taco {
+    background: var(--blanco);
+    border-bottom: var(--borde);
+    transition: box-shadow 0.25s;
+}
+
+/* JavaScript agrega esta clase al bajar en la página */
+.navbar-taco.con-sombra {
+    box-shadow: 0 6px 0 rgba(17, 17, 17, 0.12);
+}
+
+.navbar-brand {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-family: var(--fuente-titulos);
+    font-size: 1.6rem;
+    color: var(--negro);
+}
+
+.navbar-brand img {
+    width: 42px;
+    height: 42px;
+    transition: transform 0.3s;
+}
+
+.navbar-brand:hover img {
+    transform: rotate(-12deg) scale(1.08);
+}
+
+.navbar-taco .nav-link {
+    font-weight: 700;
+    color: var(--negro);
+    border: 2px solid transparent;
+    border-radius: 999px;
+    padding: 0.4rem 0.9rem !important;
+}
+
+.navbar-taco .nav-link:hover,
+.navbar-taco .nav-link:focus {
+    color: var(--rojo);
+}
+
+.navbar-taco .nav-link.active {
+    color: var(--blanco) !important;
+    background: var(--negro);
+}
+
+.navbar-taco .navbar-toggler {
+    border: var(--borde);
+    box-shadow: 3px 3px 0 var(--negro);
+}
+
+.navbar-taco .dropdown-menu {
+    border: var(--borde);
+    border-radius: 16px;
+    padding: 0.5rem;
+    box-shadow: var(--sombra);
+}
+
+.navbar-taco .dropdown-item {
+    border-radius: 10px;
+    padding: 0.5rem 0.8rem;
+    font-weight: 600;
+}
+
+.navbar-taco .dropdown-item.active,
+.navbar-taco .dropdown-item:active {
+    background: var(--rojo);
+    color: var(--blanco);
+}
+
+/* Etiqueta "Abierto ahora / Cerrado" (la llena JavaScript) */
+.estado-local {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    font-weight: 700;
+    font-size: 0.85rem;
+}
+
+.estado-local::before {
+    content: "";
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--gris-texto);
+    border: 2px solid var(--negro);
+}
+
+.estado-local.abierto::before {
+    background: #2bb24c;
+}
+
+.estado-local.cerrado::before {
+    background: var(--rojo);
+}
+
+
+/* ---------------------------------------------------------------------
+   5. Carrusel de la página de inicio (lo controla carrusel.js)
+   --------------------------------------------------------------------- */
+.carrusel {
+    position: relative;
+    overflow: hidden;
+    color: var(--blanco);
+    background:
+        radial-gradient(circle at 15% 20%, rgba(255, 255, 255, 0.12) 0 2px, transparent 3px) 0 0 / 34px 34px,
+        var(--rojo);
+    border-bottom: var(--borde);
+}
+
+/* La pista tiene todas las diapositivas en fila; JS la desplaza */
+.carrusel-pista {
+    display: flex;
+    transition: transform 0.7s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+.carrusel-slide {
+    flex: 0 0 100%;
+    padding: 4rem 0 5.5rem;
+}
+
+.titulo-hero {
+    font-family: var(--fuente-titulos);
+    font-size: clamp(2.8rem, 7vw, 5rem);
+    line-height: 0.98;
+    margin: 1rem 0 1.2rem;
+    text-shadow: 4px 4px 0 var(--negro);
+}
+
+.carrusel .lead {
+    font-size: 1.2rem;
+    max-width: 500px;
+    margin-bottom: 2rem;
+}
+
+.carrusel-img {
+    max-height: 360px;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    background: var(--blanco);
+    border: var(--borde);
+    border-radius: 32px;
+    box-shadow: 12px 12px 0 var(--negro);
+    transform: rotate(2deg);
+}
+
+.carrusel-control {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 52px;
+    height: 52px;
+    border: var(--borde);
+    border-radius: 50%;
+    background: var(--blanco);
+    color: var(--negro);
+    font-size: 1.3rem;
+    display: grid;
+    place-items: center;
+    box-shadow: 3px 3px 0 var(--negro);
+    z-index: 2;
+    transition: background 0.2s;
+}
+
+.carrusel-control:hover {
+    background: var(--gris);
+}
+
+.carrusel-control.anterior { left: 1rem; }
+.carrusel-control.siguiente { right: 1rem; }
+
+.carrusel-indicadores {
+    position: absolute;
+    left: 50%;
+    bottom: 1.8rem;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 0.5rem;
+    z-index: 2;
+}
+
+.carrusel-punto {
+    width: 14px;
+    height: 14px;
+    padding: 0;
+    border: 2px solid var(--negro);
+    border-radius: 999px;
+    background: var(--blanco);
+    transition: width 0.3s, background 0.3s;
+}
+
+/* El punto activo se alarga (la clase la pone JavaScript) */
+.carrusel-punto.activo {
+    width: 40px;
+    background: var(--negro);
+}
+
+
+/* ---------------------------------------------------------------------
+   6. Secciones, títulos y separadores
+   --------------------------------------------------------------------- */
+.seccion {
+    padding: 5rem 0;
+}
+
+.titulo-seccion {
+    font-size: clamp(2.2rem, 5vw, 3.2rem);
+    line-height: 1.05;
+}
+
+.titulo-seccion .resaltado {
+    color: var(--rojo);
+}
+
+/* Separador en zigzag entre secciones */
+.zigzag {
+    height: 20px;
+    background:
+        linear-gradient(135deg, var(--negro) 25%, transparent 25%) -10px 0 / 20px 20px,
+        linear-gradient(225deg, var(--negro) 25%, transparent 25%) -10px 0 / 20px 20px;
+}
+
+
+/* ---------------------------------------------------------------------
+   7. Tarjetas de platos
+   --------------------------------------------------------------------- */
+.tarjeta-plato {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+    padding: 1.5rem;
+    border: var(--borde);
+    border-radius: var(--radio);
+    background: var(--blanco);
+    box-shadow: var(--sombra);
+    cursor: pointer;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s;
+}
+
+.tarjeta-plato:focus-visible {
+    outline: 4px solid var(--rojo);
+    outline-offset: 4px;
+}
+
+/* Clase que agrega JavaScript al pasar el mouse (o al enfocar con Tab) */
+.tarjeta-plato.destacado {
+    transform: translate(-4px, -4px) rotate(-1deg);
+    box-shadow: var(--sombra-roja);
+    background: #fffafa;
+}
+
+/* Foto del plato con borde grueso (estilo cómic) */
+.plato-foto {
+    position: relative;
+    margin: -0.2rem -0.2rem 0.3rem;
+}
+
+.plato-foto img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    display: block;
+    border: var(--borde);
+    border-radius: 14px;
+    transition: transform 0.3s ease, filter 0.3s ease;
+}
+
+.tarjeta-plato.destacado .plato-foto img {
+    transform: scale(1.02) rotate(1deg);
+    filter: saturate(1.15);
+}
+
+.plato-precio {
+    position: absolute;
+    top: -12px;
+    right: -8px;
+    z-index: 1;
+}
+
+.plato-categoria {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--rojo);
+}
+
+.tarjeta-plato h3 {
+    font-size: 1.5rem;
+    margin: 0;
+}
+
+.tarjeta-plato p {
+    margin: 0;
+    color: var(--gris-texto);
+    flex-grow: 1;
+}
+
+.plato-pie {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 0.8rem;
+    border-top: 2px dashed var(--negro);
+    font-weight: 700;
+    font-size: 0.9rem;
+}
+
+.plato-ver i {
+    display: inline-block;
+    transition: transform 0.3s;
+}
+
+.tarjeta-plato.destacado .plato-ver {
+    color: var(--rojo);
+}
+
+.tarjeta-plato.destacado .plato-ver i {
+    transform: translateX(5px);
+}
+
+.picante {
+    white-space: nowrap;
+}
+
+.etiqueta-veg {
+    display: inline-block;
+    padding: 0.1rem 0.5rem;
+    border: 2px solid var(--negro);
+    border-radius: 999px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    background: #d9f2df;
+}
+
+.ayuda-interaccion {
+    font-weight: 600;
+    color: var(--gris-texto);
+}
+
+/* Ventana de detalles del plato (modal creado por JavaScript) */
+.modal-plato-cabecera {
+    padding: 1.5rem 2rem;
+    text-align: center;
+    color: var(--blanco);
+    background: var(--rojo);
+    border-bottom: var(--borde);
+}
+
+.modal-plato-foto {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    display: block;
+    border-bottom: var(--borde);
+}
+
+.boton-cerrar-foto {
+    padding: 0.6rem;
+    border-radius: 50%;
+    background-color: var(--negro);
+    opacity: 1;
+}
+
+.modal-plato-cabecera h2 {
+    font-size: 2.2rem;
+    margin: 0;
+    text-shadow: 3px 3px 0 var(--negro);
+}
+
+.lista-check {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.lista-check li {
+    display: flex;
+    gap: 0.6rem;
+    padding: 0.3rem 0;
+}
+
+.lista-check i {
+    color: var(--rojo);
+}
+
+.sin-resultados {
+    padding: 2rem;
+    border: 3px dashed var(--negro);
+    border-radius: var(--radio);
+    text-align: center;
+    font-weight: 600;
+}
+
+
+/* ---------------------------------------------------------------------
+   8. Cabecera de las páginas subordinadas
+   --------------------------------------------------------------------- */
+.pagina-cabecera {
+    padding: 3.5rem 0;
+    color: var(--blanco);
+    background:
+        radial-gradient(circle at 15% 20%, rgba(255, 255, 255, 0.12) 0 2px, transparent 3px) 0 0 / 34px 34px,
+        var(--rojo);
+    border-bottom: var(--borde);
+}
+
+.pagina-cabecera h1 {
+    font-size: clamp(2.8rem, 7vw, 4.4rem);
+    line-height: 1;
+    margin: 0.6rem 0 0.8rem;
+    text-shadow: 4px 4px 0 var(--negro);
+}
+
+.pagina-cabecera .lead {
+    max-width: 640px;
+    margin: 0;
+    font-weight: 500;
+}
+
+.breadcrumb {
+    --bs-breadcrumb-divider-color: rgba(255, 255, 255, 0.7);
+    --bs-breadcrumb-item-active-color: var(--blanco);
+    margin: 0;
+    font-weight: 600;
+}
+
+.breadcrumb a {
+    color: var(--blanco);
+}
+
+
+/* ---------------------------------------------------------------------
+   9. Componentes
+   --------------------------------------------------------------------- */
+
+/* Caja con borde grueso y sombra (se usa en muchas secciones) */
+.caja {
+    height: 100%;
+    padding: 1.6rem;
+    border: var(--borde);
+    border-radius: var(--radio);
+    background: var(--blanco);
+    box-shadow: var(--sombra);
+}
+
+.caja h3 {
+    font-size: 1.5rem;
+}
+
+.caja-icono {
+    width: 56px;
+    height: 56px;
+    display: grid;
+    place-items: center;
+    margin-bottom: 1rem;
+    border: var(--borde);
+    border-radius: 16px;
+    font-size: 1.5rem;
+    background: var(--rojo);
+    color: var(--blanco);
+}
+
+/* Cifras animadas */
+.cifra {
+    font-family: var(--fuente-titulos);
+    font-size: clamp(3rem, 6vw, 4.2rem);
+    line-height: 1;
+    color: var(--rojo);
+}
+
+.cifra-texto {
+    margin-top: 0.4rem;
+    font-weight: 600;
+}
+
+/* Accesos rápidos a las páginas */
+.acceso {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    height: 100%;
+    padding: 0.9rem 1.1rem;
+    border: var(--borde);
+    border-radius: 16px;
+    background: var(--blanco);
+    color: var(--negro);
+    font-weight: 700;
+    text-decoration: none;
+    box-shadow: 4px 4px 0 var(--negro);
+    transition: transform 0.15s, box-shadow 0.15s, background 0.15s;
+}
+
+.acceso span {
+    font-size: 1.5rem;
+}
+
+.acceso:hover,
+.acceso:focus-visible {
+    color: var(--negro);
+    background: var(--rojo-suave);
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0 var(--rojo);
+}
+
+/* Panel lateral (aside) */
+.panel-aside {
+    padding: 1.6rem;
+    border: var(--borde);
+    border-radius: var(--radio);
+    background: var(--negro);
+    color: var(--blanco);
+    box-shadow: 6px 6px 0 var(--rojo);
+}
+
+.panel-aside h2 {
+    font-size: 1.6rem;
+}
+
+.panel-aside p,
+.panel-aside li {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.panel-aside .lista-check i {
+    color: #ff6b77;
+}
+
+/* Llamado a la acción */
+.cta {
+    padding: 3rem;
+    border: var(--borde);
+    border-radius: 28px;
+    background: var(--negro);
+    color: var(--blanco);
+    box-shadow: 10px 10px 0 var(--rojo);
+}
+
+/* Tarjetas de promociones */
+.promo {
+    position: relative;
+    height: 100%;
+    padding: 2rem 1.6rem 1.6rem;
+    border: var(--borde);
+    border-radius: var(--radio);
+    background: var(--blanco);
+    box-shadow: var(--sombra);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.promo:hover {
+    transform: translate(-3px, -3px) rotate(-1deg);
+    box-shadow: var(--sombra-roja);
+}
+
+.promo .sticker {
+    position: absolute;
+    top: -16px;
+    right: 1rem;
+}
+
+.promo-emoji {
+    font-size: 3rem;
+}
+
+.promo h3 {
+    font-size: 1.8rem;
+}
+
+/* Cuenta regresiva */
+.cuenta-regresiva {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+}
+
+.cuenta-regresiva div {
+    min-width: 84px;
+    padding: 0.8rem;
+    border: var(--borde);
+    border-radius: 14px;
+    background: var(--blanco);
+    color: var(--negro);
+    text-align: center;
+    box-shadow: 4px 4px 0 var(--negro);
+}
+
+.cuenta-regresiva strong {
+    display: block;
+    font-family: var(--fuente-titulos);
+    font-size: 2.2rem;
+    line-height: 1;
+    color: var(--rojo);
+}
+
+.cuenta-regresiva span {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+/* Tabla de horario */
+.tabla-horario {
+    border: var(--borde);
+    border-radius: var(--radio);
+    overflow: hidden;
+    box-shadow: var(--sombra);
+}
+
+.tabla-horario table {
+    margin: 0;
+}
+
+/* JavaScript resalta la fila del día de hoy */
+.tabla-horario tr.hoy > * {
+    background: var(--rojo-suave);
+    font-weight: 700;
+}
+
+.imagen-caja {
+    border: var(--borde);
+    border-radius: 24px;
+    box-shadow: var(--sombra);
+    background: var(--blanco);
+}
+
+/* Chef / equipo */
+.avatar {
+    width: 90px;
+    height: 90px;
+    display: grid;
+    place-items: center;
+    margin: 0 auto 1rem;
+    border: var(--borde);
+    border-radius: 50%;
+    font-size: 2.6rem;
+    background: var(--rojo-suave);
+    box-shadow: 4px 4px 0 var(--negro);
+}
+
+
+/* ---------------------------------------------------------------------
+   10. Galería (la ventana grande la controla galeria.js)
+   --------------------------------------------------------------------- */
+.galeria-item {
+    display: block;
+    width: 100%;
+    padding: 0;
+    border: var(--borde);
+    border-radius: var(--radio);
+    overflow: hidden;
+    background: var(--blanco);
+    box-shadow: var(--sombra);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.galeria-item:hover,
+.galeria-item:focus-visible {
+    transform: translate(-3px, -3px) rotate(-1deg);
+    box-shadow: var(--sombra-roja);
+}
+
+.galeria-item img {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    display: block;
+}
+
+.galeria-item figcaption {
+    padding: 0.7rem 1rem;
+    border-top: var(--borde);
+    font-weight: 700;
+    text-align: left;
+}
+
+.visor-imagen {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    background: var(--gris);
+}
+
+.visor-control {
+    width: 48px;
+    height: 48px;
+    border: var(--borde);
+    border-radius: 50%;
+    background: var(--blanco);
+    display: grid;
+    place-items: center;
+    box-shadow: 3px 3px 0 var(--negro);
+}
+
+
+/* ---------------------------------------------------------------------
+   11. Formularios
+   --------------------------------------------------------------------- */
+.formulario {
+    padding: 2rem;
+    border: var(--borde);
+    border-radius: 24px;
+    background: var(--blanco);
+    box-shadow: var(--sombra);
+}
+
+.form-label {
+    font-weight: 700;
+}
+
+.contador-caracteres {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--gris-texto);
+}
+
+.contador-caracteres.limite {
+    color: var(--rojo);
+}
+
+.resumen-reserva {
+    padding: 1.5rem;
+    border: var(--borde);
+    border-radius: var(--radio);
+    background: var(--rojo-suave);
+    box-shadow: var(--sombra);
+    animation: aparecer 0.4s ease;
+}
+
+
+/* ---------------------------------------------------------------------
+   12. Pie de página y botón "volver arriba"
+   --------------------------------------------------------------------- */
+.pie {
+    padding: 4rem 0 2rem;
+    background: var(--negro);
+    color: rgba(255, 255, 255, 0.75);
+}
+
+.pie h2 {
+    font-size: 1.3rem;
+    color: var(--blanco);
+    margin-bottom: 1rem;
+}
+
+.pie ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.pie li {
+    margin-bottom: 0.5rem;
+}
+
+.pie a {
+    color: rgba(255, 255, 255, 0.75);
+    text-decoration: none;
+}
+
+.pie a:hover {
+    color: #ff6b77;
+}
+
+.pie .navbar-brand {
+    color: var(--blanco);
+}
+
+.pie-inferior {
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 2px dashed rgba(255, 255, 255, 0.25);
+    font-size: 0.9rem;
+}
+
+.enlace-github {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    border: 2px solid var(--blanco);
+    border-radius: 999px;
+    font-weight: 700;
+}
+
+.btn-arriba {
+    position: fixed;
+    right: 1.2rem;
+    bottom: 1.2rem;
+    z-index: 1000;
+    width: 52px;
+    height: 52px;
+    border: var(--borde);
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    font-size: 1.2rem;
+    color: var(--blanco);
+    background: var(--rojo);
+    box-shadow: 4px 4px 0 var(--negro);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(12px);
+    transition: opacity 0.25s, transform 0.25s, visibility 0.25s;
+}
+
+/* JavaScript agrega "visible" cuando se baja en la página */
+.btn-arriba.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+
+/* ---------------------------------------------------------------------
+   13. Animaciones
+   --------------------------------------------------------------------- */
+@keyframes aparecer {
+    from { opacity: 0; transform: translateY(-8px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes bambolear {
+    0%, 100% { transform: rotate(-3deg); }
+    50%      { transform: rotate(3deg); }
+}
+
+.bambolea {
+    animation: bambolear 2.5s ease-in-out infinite;
+}
+
+/* Respeta a quienes prefieren menos movimiento */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation: none !important;
+        transition: none !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+
+/* ---------------------------------------------------------------------
+   14. Diseño responsivo
+   (Bootstrap ya adapta la cuadrícula; aquí se ajustan detalles propios)
+   --------------------------------------------------------------------- */
+
+/* Menú colapsado (pantallas medianas y pequeñas) */
+@media (max-width: 1199.98px) {
+    .navbar-taco .navbar-collapse {
+        padding: 1rem 0;
+    }
+
+    /* Las flechas taparían el texto: se usa deslizar, los puntos o el teclado */
+    .carrusel-control {
+        display: none;
+    }
+}
+
+/* Tablets */
+@media (max-width: 991.98px) {
+
+    .carrusel-slide {
+        padding: 3rem 0 5rem;
+        text-align: center;
+    }
+
+    .carrusel .lead {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .carrusel-img {
+        max-height: 260px;
+    }
+
+    .carrusel-control {
+        display: none;
+    }
+
+    .seccion {
+        padding: 3.5rem 0;
+    }
+}
+
+/* Celulares */
+@media (max-width: 575.98px) {
+    .cta,
+    .formulario {
+        padding: 1.5rem;
+    }
+
+    .carrusel-img {
+        max-height: 200px;
+        box-shadow: 8px 8px 0 var(--negro);
+    }
+
+    .pagina-cabecera {
+        padding: 2.5rem 0;
+    }
+
+    .cuenta-regresiva div {
+        min-width: 70px;
+        flex: 1;
+    }
+}
