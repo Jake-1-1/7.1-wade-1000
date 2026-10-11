@@ -3,7 +3,7 @@
 =====================================================================
 
 Repositorio en GitHub:
-https://github.com/TU_USUARIO/TU_REPOSITORIO
+https://github.com/Jake-1-1/7.1-wade-1000.git
 
 
 DESCRIPCIÓN
